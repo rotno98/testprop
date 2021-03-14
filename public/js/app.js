@@ -2029,7 +2029,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.messages = response.data;
       });
     },
-    sendMessage: function sendMessage() {
+    sendMessages: function sendMessages() {
       this.messages.push({
         user: this.user,
         message: this.newMessage
@@ -43872,7 +43872,7 @@ var render = function() {
               ) {
                 return null
               }
-              return _vm.sendMessage($event)
+              return _vm.sendMessages($event)
             },
             input: function($event) {
               if ($event.target.composing) {
@@ -56158,7 +56158,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__["default"]({
   broadcaster: 'pusher',
   key: "05342103eebc81820ea0",
   cluster: "ap2",
-  encryted: true
+  encryted: false
 });
 window.Echo.channel('Chat').listen('MessageSent', function (e) {
   console.log('done');

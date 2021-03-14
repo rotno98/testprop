@@ -16,7 +16,7 @@
                 </div>
 
                 <input type="text"
-                    @keyup.enter="sendMessage" 
+                    @keyup.enter="sendMessages" 
                     v-model="newMessage"
                     name="message" 
                     placeholder="Enter your message"
@@ -75,7 +75,7 @@
                 })
             },
 
-             sendMessage(){
+             sendMessages(){
                  this.messages.push({
                      user:this.user,
                      message: this.newMessage
