@@ -7,7 +7,7 @@
             
                 <div class="card-header">Messages</div>
                 <div class="card-body p-0">
-                    <ul class="list-unstyled" style="height:300px; overflow-y:scroll">
+                    <ul class="list-unstyled" style="height:300px; overflow-y:scroll " v-chat-scroll>
                         <li class="p-2" v-for="(message,index) in messages" :key="index">
                             <strong>{{message.user.name}}</strong>
                             {{message.message}}
@@ -16,6 +16,7 @@
                 </div>
 
                 <input type="text"
+                    
                     @keyup.enter="sendMessages" 
                     v-model="newMessage"
                     name="message" 
@@ -25,7 +26,7 @@
                 
 
             </div>
-            <span class="text-muted">user is typing...</span>
+           
     
         </div>
 
@@ -66,6 +67,8 @@
 
         created(){
             this.fetchMessages();
+            setInterval(this.fetchMessages,5000);
+            
             Echo.join('Chat')
             .here(user=> {
                //console.log('Here');
@@ -85,7 +88,7 @@
             })
             .listen('MessageSent',(event)=> {
                 this.messages.push(event.message);
-            });
+            })
         },
 
         methods: {
@@ -104,6 +107,8 @@
 
                 this.newMessage='';
             }
+
+           
 
 
         }
